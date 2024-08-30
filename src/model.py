@@ -12,6 +12,7 @@ class NeuralNet(nn.Module):
             input_size (int): The size of the input.
             hidden_size (int): The size of the hidden layer.
             num_classes (int): The number of classes in the output layer.
+            
         """
         super(NeuralNet, self).__init__()
         self.l1 = nn.Linear(input_size, hidden_size)
