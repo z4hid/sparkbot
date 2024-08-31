@@ -1,3 +1,7 @@
+# Import the necessary modules. Flask is the web application framework.
+# render_template is a function that renders a template (an HTML file)
+# request is an object that contains information about the current request.
+# jsonify is a function that creates a JSON response.
 from flask import Flask, render_template, request, jsonify
 import random
 import json
@@ -5,8 +9,12 @@ import torch
 from src.model import NeuralNet
 from src.utils import bag_of_words, tokenize
 
+# Create an instance of the Flask class.
+# This is the main web application.
 app = Flask(__name__)
 
+# Set the device to 'cpu'. This means that the neural network
+# will be run on the CPU rather than the GPU.
 device = torch.device('cpu')
 
 with open('./data/intents.json', 'r') as json_data:
@@ -58,3 +66,5 @@ def handle_message():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=7000,) # debug=True)
+
+
