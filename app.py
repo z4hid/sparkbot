@@ -42,6 +42,15 @@ def home():
 
 @app.route('/handle_message', methods=['POST'])
 def handle_message():
+    """
+    Handles the message sent from the user by tokenizing the message
+    and converting it into a bag-of-words representation. It then
+    passes the representation into the neural network model to predict
+    the tag of the message. If the probability of the predicted tag is
+    higher than 0.75, it will find the corresponding response and
+    return it to the user. If the probability is lower than 0.75, it
+    will return a default response of "I do not understand...".
+    """
     message = request.get_json()['message']
     sentence = tokenize(message)
     X = bag_of_words(sentence, all_words)
